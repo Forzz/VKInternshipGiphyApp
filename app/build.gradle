@@ -1,7 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android' version '2.44' apply false
 }
+
+apply plugin: 'com.google.dagger.hilt.android'
 
 android {
     compileSdk 33
@@ -31,6 +35,12 @@ android {
     }
 }
 
+kapt {
+    javacOptions {
+        option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
+    }
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -42,13 +52,18 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // RxJava
-    implementation "io.reactivex.rxjava3:rxjava:3.1.6"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.21"
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.15.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.0'
+
+    // Dagger-Hilt
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt 'com.google.dagger:hilt-compiler:2.44'
 }
