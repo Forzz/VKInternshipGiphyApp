@@ -43,6 +43,13 @@ kapt {
 
 dependencies {
 
+    def rxjavaVersion = '2.2.21'
+    def rxAndroidVersion = '2.1.1'
+    def retrofitVersion = '2.9.0'
+    def glideVersion = '4.15.0'
+    def daggerhiltVersion = '2.44'
+    def navVersion = '2.5.3'
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.8.0'
@@ -51,19 +58,24 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
+
     // RxJava
-    implementation "io.reactivex.rxjava2:rxjava:2.2.21"
+    implementation "io.reactivex.rxjava2:rxjava:${rxjavaVersion}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
 
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.15.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.0'
+    implementation "com.github.bumptech.glide:glide:${glideVersion}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
 
     // Dagger-Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt 'com.google.dagger:hilt-compiler:2.44'
+    implementation "com.google.dagger:hilt-android:${daggerhiltVersion}"
+    kapt "com.google.dagger:hilt-compiler:${daggerhiltVersion}"
 }
