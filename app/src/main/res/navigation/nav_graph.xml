@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/gifListScreen">
+
+    <fragment
+        android:id="@+id/gifListScreen"
+        android:name="com.forzz.android.vkinternshipgiphy.presentation.GifListScreen"
+        android:label="gif_list_screen_fragment"
+        tools:layout="@layout/gif_list_screen_fragment" />
+</navigation>

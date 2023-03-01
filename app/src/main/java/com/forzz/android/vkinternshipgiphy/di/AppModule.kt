@@ -4,6 +4,8 @@ import android.content.Context
 import android.net.ConnectivityManager
 import com.forzz.android.vkinternshipgiphy.common.Constants
 import com.forzz.android.vkinternshipgiphy.data.remote.GiphyApi
+import com.forzz.android.vkinternshipgiphy.data.repository.GifRepositoryImpl
+import com.forzz.android.vkinternshipgiphy.domain.repository.GifRepository
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -50,9 +52,15 @@ class AppModule {
         return RxJava2CallAdapterFactory.create()
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideService(retrofit: Retrofit): GiphyApi {
         return retrofit.create(GiphyApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGifRepository(api: GiphyApi): GifRepository {
+        return GifRepositoryImpl(api)
     }
 }

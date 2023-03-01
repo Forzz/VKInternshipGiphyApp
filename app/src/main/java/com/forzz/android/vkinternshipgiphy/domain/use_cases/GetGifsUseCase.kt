@@ -4,8 +4,9 @@ import com.forzz.android.vkinternshipgiphy.domain.model.Gif
 import com.forzz.android.vkinternshipgiphy.domain.repository.GifRepository
 import com.forzz.android.vkinternshipgiphy.domain.use_cases.base.SingleUseCase
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GetGifsUseCase(private val repository: GifRepository) : SingleUseCase<List<Gif>>() {
+class GetGifsUseCase @Inject constructor(private val repository: GifRepository) : SingleUseCase<List<Gif>>() {
 
     private var apiKey = ""
     private var query = ""
