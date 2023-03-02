@@ -5,10 +5,14 @@ import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.RoundedCorner
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.FragmentActivity
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -19,7 +23,7 @@ import com.forzz.android.vkinternshipgiphy.databinding.GifItemBinding
 import com.forzz.android.vkinternshipgiphy.domain.model.Gif
 
 
-internal class GifsAdapter() :
+internal class GifsAdapter(val gifListClickListener: GifListClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val gifs: MutableList<Gif> = ArrayList()
@@ -51,7 +55,7 @@ internal class GifsAdapter() :
                 .into(binding.gifImage)
 
             binding.gifImage.setOnClickListener {
-                Log.d("GIF_TITLE", gif.title)
+                gifListClickListener.onGifListItemClick(it, gif)
             }
         }
     }

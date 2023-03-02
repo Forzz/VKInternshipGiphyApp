@@ -9,5 +9,21 @@
         android:id="@+id/gifListScreen"
         android:name="com.forzz.android.vkinternshipgiphy.presentation.GifListScreen"
         android:label="gif_list_screen_fragment"
-        tools:layout="@layout/gif_list_screen_fragment" />
+        tools:layout="@layout/gif_list_screen_fragment" >
+        <action
+            android:id="@+id/action_gifListScreen_to_gifDeatils"
+            app:destination="@id/gifDeatils" />
+    </fragment>
+    <fragment
+        android:id="@+id/gifDeatils"
+        android:name="com.forzz.android.vkinternshipgiphy.presentation.GifDetails"
+        android:label="gif_deatils_fragment"
+        tools:layout="@layout/gif_details_fragment" >
+        <argument
+            android:name="gif"
+            app:argType="com.forzz.android.vkinternshipgiphy.domain.model.Gif" />
+        <action
+            android:id="@+id/action_gifDeatils_to_gifListScreen"
+            app:destination="@id/gifListScreen" />
+    </fragment>
 </navigation>
