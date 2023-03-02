@@ -2,6 +2,7 @@ package com.forzz.android.vkinternshipgiphy.presentation
 
 import android.R
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.RoundedCorner
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ internal class GifsAdapter() :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = GifItemBinding.inflate(inflater, parent, false)
+
         return GifsViewHolder(binding)
     }
 
@@ -33,9 +35,9 @@ internal class GifsAdapter() :
         (holder as GifsViewHolder).onBind(getItem(position))
     }
 
-    private fun getItem(position: Int): Gif = gifs[position]
-
     override fun getItemCount(): Int = gifs.size
+
+    private fun getItem(position: Int): Gif = gifs[position]
 
     inner class GifsViewHolder(
         private val binding: GifItemBinding
@@ -47,6 +49,10 @@ internal class GifsAdapter() :
                 .load(gif.urlPreview)
                 .transform(FitCenter(), RoundedCorners(6))
                 .into(binding.gifImage)
+
+            binding.gifImage.setOnClickListener {
+                Log.d("GIF_TITLE", gif.title)
+            }
         }
     }
 

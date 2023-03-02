@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="gifsListViewModel"
             type="com.forzz.android.vkinternshipgiphy.presentation.GifListScreenViewModel" />
@@ -12,40 +13,40 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#35373b"
         tools:context=".presentation.GifListScreen">
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/gifs_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="56dp"
+            android:layout_height="0dp"
             android:layout_marginStart="6dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="6dp"
             android:layout_marginBottom="4dp"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_search_query"
-            tools:layout_editor_absoluteX="2dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_search_query" />
 
         <EditText
             android:id="@+id/edit_text_search_query"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/rounded_edit_text"
             android:hint="Search"
             android:inputType="text"
-            app:layout_constraintBottom_toBottomOf="@+id/button"
-            app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:text="@{gifsListViewModel.text}"
+            android:paddingLeft="8dp"
+            android:textColor="#ededed"
+            android:textColorHint="#858383"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="55dp"
-            android:layout_height="50dp"
-            android:text="Go"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/edit_text_search_query"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

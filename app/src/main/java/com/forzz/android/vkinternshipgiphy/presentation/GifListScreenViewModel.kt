@@ -1,5 +1,7 @@
 package com.forzz.android.vkinternshipgiphy.presentation
 
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,21 +17,34 @@ class GifListScreenViewModel @Inject constructor(private val getGifsUseCase: Get
 
     private val _gifs = MutableLiveData<List<Gif>>()
     val gifs: LiveData<List<Gif>> = _gifs
+    var text = MutableLiveData<String>()
+    var apiKey = MutableLiveData<String>()
+
+    private val handler = Handler(Looper.getMainLooper())
+    private var runnable: Runnable? = null
+
+    fun search(query: String) {
+        runnable?.let { handler.removeCallbacks(it) }
+        runnable = Runnable {
+            fetchGifs(apiKey.value!!, query)
+        }
+        handler.postDelayed(runnable!!, 1200)
+    }
 
     fun fetchGifs(
-        apiKey: String,
-        query: String,
-        limit: Int,
-        offset: Int,
-        rating: String,
-        lang: String
+        apiKey: String, query: String
     ) {
+        val limit: Int = 25
+        val offset: Int = 0
+        val rating: String = "g"
+        val lang: String = "en"
+
         getGifsUseCase.setParams(apiKey, query, limit, offset, rating, lang)
         getGifsUseCase.execute(onSuccess = {
             _gifs.postValue(it)
-            Log.d("GIF_URL", it[0].urlPreview)
+            Log.d("CHECK_THE_NUMBER_OF_REQUESTS", "REQUEST")
         }, onError = {
-            Log.d("EXECUTING_ERROR", it.localizedMessage)
+            Log.e("EXECUTING_ERROR", it.localizedMessage)
         })
     }
 
