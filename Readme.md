@@ -16,3 +16,7 @@ To make it work, you need to add the API key to res/values.
     <string name="giphy_api_key">Your_API_Token</string>
 </resources>
 ```
+
+## Demo
+
+https://user-images.githubusercontent.com/29492157/222842440-7d1bbf6b-fa68-4738-b9cd-307709d8844a.mp4
