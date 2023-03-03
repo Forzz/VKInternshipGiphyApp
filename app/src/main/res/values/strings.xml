@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">VKInternshipGiphy</string>
+    <string name="title_placeholder">Title</string>
+    <string name="username_placeholder">Username</string>
+    <string name="date_placeholder">Uploaded 02–03–2023</string>
+    <string name="frames_placeholder">Frames: 25</string>
+    <string name="gif_preview_description">Preview Gif</string>
+    <string name="search_bar_hint">Search</string>
+    <string name="gif_original_description">Original Gif</string>
+
 </resources>

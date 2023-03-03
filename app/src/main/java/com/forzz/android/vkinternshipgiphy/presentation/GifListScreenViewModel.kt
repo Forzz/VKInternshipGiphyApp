@@ -31,7 +31,7 @@ class GifListScreenViewModel @Inject constructor(private val getGifsUseCase: Get
         handler.postDelayed(runnable!!, 1200)
     }
 
-    fun fetchGifs(
+    private fun fetchGifs(
         apiKey: String, query: String
     ) {
         val limit: Int = 25
@@ -42,7 +42,6 @@ class GifListScreenViewModel @Inject constructor(private val getGifsUseCase: Get
         getGifsUseCase.setParams(apiKey, query, limit, offset, rating, lang)
         getGifsUseCase.execute(onSuccess = {
             _gifs.postValue(it)
-            Log.d("CHECK_THE_NUMBER_OF_REQUESTS", "REQUEST")
         }, onError = {
             Log.e("EXECUTING_ERROR", it.localizedMessage)
         })

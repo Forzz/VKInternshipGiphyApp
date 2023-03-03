@@ -1,7 +1,5 @@
 package com.forzz.android.vkinternshipgiphy.di
 
-import android.content.Context
-import android.net.ConnectivityManager
 import com.forzz.android.vkinternshipgiphy.common.Constants
 import com.forzz.android.vkinternshipgiphy.data.remote.GiphyApi
 import com.forzz.android.vkinternshipgiphy.data.repository.GifRepositoryImpl
@@ -10,7 +8,6 @@ import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
