@@ -16,6 +16,3 @@ To make it work, you need to add the API key to res/values.
     <string name="giphy_api_key">Your_API_Token</string>
 </resources>
 ```
-
-## Example
-![](https://storage.yandexcloud.net/learning-bucket/GitHub/VKInternshipGiphyApp/Recording%202023-03-03%20205216.gif)
